@@ -1,0 +1,33 @@
+<div class= 'row'>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card_header text-center">
+        <%= @album.title %>
+      </div>
+      <div class="card-body">
+        <%=image_tag(@album.cover_photo,class:'img-fluid')%>
+      </div>
+      <div class="card-footer">
+        <%= @album.description %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= link_to 'Edit', edit_album_path(@album), class:"btn btn-secondary" %> 
+<%= link_to 'Back', albums_path, class: "btn btn-info" %> 
+<%= link_to 'Delete', @album, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> 
+<h1>All Photos</h1>
+  <div class= 'row'>
+  <%@album.photos.each do |image|%>
+  <div class="col-md-3">
+    <div class="card">
+      
+      <div class="card-body">
+        <%=image_tag(image,class:'img-fluid')%>
+      </div>
+  
+    </div>
+  </div>
+  <%end%>
+</div>
+ 

@@ -1,0 +1,34 @@
+<div class= 'row'>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header text-center">
+        <%= @album.title %>
+      </div>
+      <div class="card-body">
+        <%=image_tag(@album.cover_photo,class:'img-fluid')%>
+      </div>
+      <div class="card-footer">
+        <strong>Description: </strong><%= @album.description %>
+      </div>
+    </div>
+  </div>
+</div><br>
+<h1 class="d-flex align-items-center justify-content-center">All Photos</h1><br>
+  <div class= 'row'>
+  <%@album.photos.each do |image|%>
+  <div class="col-md-3">
+    <div class="card-header shadow p-3 mb-5 bg-white rounded">
+      <%= link_to image, class:"left-photo" do %> 
+        <i class="fas fa-search-plus"></i>
+      <% end %>
+      <%= link_to  delete_image_albums_path(id: image.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"right-photo" do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+      <div class="card-body">
+        <%=image_tag(image,class:'img-fluid')%>
+      </div>
+    </div>
+  </div>
+  <%end%>
+</div>
+ 

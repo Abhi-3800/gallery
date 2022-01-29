@@ -1,0 +1,28 @@
+<br/><p class="d-flex align-items-center justify-content-center", style="font-size:20px;">GALLERY APP : Your Added Albums</p><br/>
+<div class= 'row'>
+<%@albums.each do |album|%>
+  <div class="col-md-4 ">
+    <div class="card">
+       <div class="card-header text-center"> 
+        <%= link_to edit_album_path(album), class:"left" do %> 
+        <i class="fas fa-edit"></i>
+        <% end %>
+        <span class="center"><%= album.title%></span>
+        <%= link_to  album, method: :delete, data: { confirm: 'Are you sure?' }, class:"right" do %>
+        <i class="fas fa-trash"></i>
+        <% end %>
+      </div>
+      <div class="card-body shadow p-3 mb-5 bg-white rounded">
+          <%= link_to album do %>
+            <%= image_tag(album.cover_photo, class:'img-fluid',style:"height:16rem; width:100%;")%>
+          <% end %>
+      </div>
+      <div class="new card-footer">
+        <strong>Description: </strong><%=album.description %>
+      </div>
+    </div>
+</div>
+<%end%>
+</div>
+<br>
+

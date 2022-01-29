@@ -1,0 +1,23 @@
+<br/><p class="d-flex align-items-center justify-content-center", style="font-size:20px;">GALLERY APP : Users Published Albums</p><br/>
+<div class= 'row'>
+<%@albums.each do |album|%>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header text-center">
+        <%= album.title %>
+      </div>
+      <div class="card-body">
+        <%= link_to home_path(id: album.id) do %>
+        <%= image_tag(album.cover_photo,class:'img-fluid',style:"height:16rem;")%>
+        <% end %>
+      </div>
+      <div class="new card-footer">
+        <%= album.description %>
+      </div><br>  
+    </div>
+</div>
+<%end%>
+</div>
+<br>
+
+
