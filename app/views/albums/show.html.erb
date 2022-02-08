@@ -25,10 +25,10 @@
         <i class="fas fa-trash"></i>
       <% end %>
       <div class="card-body">
-        <%=image_tag(image,class:'img-fluid')%>
-      </div>
+        <%=image_tag(image,class:'picture img-fluid')%>
+      </div>                                                                                            
     </div>
   </div>
   <%end%>
 </div>
- 
+ <%= render "add_photo", album: @album %>

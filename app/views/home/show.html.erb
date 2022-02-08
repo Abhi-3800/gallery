@@ -1,0 +1,14 @@
+<h1 class="my-3">Description:</h1>
+<p class="lead my-2"><%= @album.description %></p>
+<div class="row mt-5">
+  <% @album.photos.each do |image|%>
+    <div class="col-lg-4 my-3">
+      <div class="card-body">
+        <%= image_tag(image,class:'picture img-fluid')%>
+        <div class="d-flex justify-content-center my-2">
+        <%= link_to "View", image, class: "view btn btn-info", target: "_blank"%> 
+        </div>       
+      </div>
+    </div>
+  <% end %>
+</div>

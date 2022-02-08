@@ -1,4 +1,15 @@
-<br/><p class="d-flex align-items-center justify-content-center", style="font-size:20px;">GALLERY APP : Your Added Albums</p><br/>
+<br/><p class="line d-flex align-items-center justify-content-center", style="font-size:20px;">GALLERY APP : Your Added Albums</p><br/>
+<div class="input-group">
+  <%= search_form_for @q do |f| %>
+    <div class="form-outline d-flex justify-content-center">
+      <%= f.search_field :tags_name_cont, class:"form-control me-2", type:"search", placeholder:"Search tags" %>
+        <button type="button" class="btn btn-success">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  <% end %>
+</div><br>
+
 <div class= 'row'>
 <%@albums.each do |album|%>
   <div class="col-md-4 ">
@@ -19,6 +30,7 @@
       </div>
       <div class="new card-footer">
         <strong>Description: </strong><%=album.description %>
+        <br><strong>Tags: </strong><%=album.all_tags %>
       </div>
     </div>
 </div>

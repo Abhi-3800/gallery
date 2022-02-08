@@ -2,7 +2,6 @@
   <% if album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
-
       <ul>
         <% album.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,7 +10,7 @@
     </div>
   <% end %>
 
- <div class="field form-group">
+  <div class="field form-group">
     <%= form.label :title %>
     <%= form.text_field :title, class:"form-control", placeholder: "Title" %>
   </div><br>
@@ -31,7 +30,7 @@
     <%= form.text_field :all_tags, class:"form-control", placeholder: "Tags (comma seperated values)" %>
   </div><br>  
 
-    <div class="field">
+  <div class="field">
     <%= form.label :photos %>
     <%= form.file_field :photos, :multiple => true, class:"form-control" %>
   </div><br>

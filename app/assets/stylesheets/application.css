@@ -37,7 +37,7 @@
 .center{
     margin: 10vmin;
 }
-h1,h2,p{
+h1,h2{
     border-bottom:2px solid black;
 }
 .left-photo{
@@ -54,4 +54,26 @@ h1,h2,p{
 .new{
     height: 12vmin;
     width: 100%;
+}
+.new{
+    height: 13vmin;
+    width: 100%;
+}
+.form-outline{
+    margin-left:490px;
+}
+.picture{
+    height: 15rem;
+    width: 100%;
+}
+.line {
+    border-bottom:2px solid black;
+}
+.card-body .picture{
+    height: 15rem;
+    width: 100%;
+    border: 3px solid black;
+}
+.field .edit-cover{
+    height: 25rem;
 }

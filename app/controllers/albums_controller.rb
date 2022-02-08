@@ -1,9 +1,16 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show, :index]
   # GET /albums or /albums.json
   def index
-    @albums = current_user.albums
+    #@albums = current_user.albums
+    if current_user
+      albums = current_user.albums
+    else
+      albums = Album.all
+    end
+    @q = albums.ransack(params[:q])
+    @albums = @q.result.includes(:tags)
   end
 
   # GET /albums/1 or /albums/1.json

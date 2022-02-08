@@ -1,6 +1,71 @@
 <br><h1>Editing Album</h1>
 <br>
-<%= render 'form', album: @album %>
+
+<%= form_with(model: @album) do |form| %>
+  <% if @album.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
+
+      <ul>
+        <% @album.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="field form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class:"form-control", placeholder: "Title" %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :new_cover_photo %>
+    <%= form.file_field :cover_photo, class:"form-control" %><br>
+    <%=image_tag(@album.cover_photo,class:'edit-cover img-fluid')%>
+  </div><br>
+
+ <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class:"form-control", placeholder: "Description" %>
+  </div><br>
+
+  <div class="field form-group">
+    <%= form.label :tag %>
+    <%= form.text_field :all_tags, class:"form-control", placeholder: "Tags (comma seperated values)" %>
+  </div><br>  
+
+  <div class="field">
+    <%= form.label :photos %>
+    <%= form.file_field :photos, :multiple => true, class:"form-control" %>
+  </div>
+  
+  <br><p class="line d-flex align-items-center justify-content-center", style="font-size:20px;">Your Uploaded Pictures</p><br/>
+
+  <div class="row mt-5">
+  <% @album.photos.each do |image|%>
+    <div class="col-lg-4 my-3">
+      <div class="card-body">
+        <%= image_tag(image,class:'picture img-fluid')%>
+        <div class="d-flex justify-content-center my-2">
+        <%= link_to "Zoom", image, class: "view btn btn-info", target: "_blank"%> 
+        </div>       
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+  <div class="field">
+    <%= form.label :published %>
+    <%= form.check_box :published %>
+  </div><br>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-info" %>
+  </div><br>
+<% end %><br>
+
 
 <%= link_to 'Show', @album, class:"btn btn-info mx-1"%>
 <%= link_to 'Back', albums_path, class:"btn btn-danger" %><br><br>
